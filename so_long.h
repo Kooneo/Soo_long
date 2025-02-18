@@ -56,13 +56,6 @@ typedef struct s_player
 	int			items_collected;
 }				t_player;
 
-// typedef struct s_enemy
-// {
-// 	int			x_pos;
-// 	int			y_pos;
-// 	int			sleep_time;
-// }				t_enemy;
-
 typedef struct s_img
 {
 	t_win		win;
@@ -82,7 +75,7 @@ typedef struct s_enemy
 {
     int x;
     int y;
-    int direction; // 1 for right/down, -1 for left/up
+    int direction;
 } t_enemy;
 
 typedef struct s_game
@@ -133,8 +126,8 @@ int				is_move_valid(t_game *game, int new_x, int new_y);
 int				handle_player_movement(t_game *game);
 
 // keys_manage.c
-void				key_press(int keycode, t_game *game);
-void				key_release(int keycode, t_game *game);
+int				key_press(int keycode, t_game *game);
+int				key_release(int keycode, t_game *game);
 void			int_keystate(t_game *game);
 
 //  animation.c

@@ -12,20 +12,20 @@
 
 #include "so_long.h"
 
-void	key_press(int keycode, t_game *game)
+int	key_press(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 		exit_game(game);
 	if (keycode >= 0 && keycode < 256)
 		game->key_states[keycode] = 1;
-	// return (1);
+	return (1);
 }
 
-void	key_release(int keycode, t_game *game)
+int	key_release(int keycode, t_game *game)
 {
 	if (keycode >= 0 && keycode < 256)
 		game->key_states[keycode] = 0;
-	// return (1);
+	return (1);
 }
 
 void	int_keystate(t_game *game)

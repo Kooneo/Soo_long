@@ -88,7 +88,7 @@ void	move_enemies(t_game *game)
 	}
 }
 
-void	handle_valid_move(t_game *game, int *new_xy, int old_xy, int direction)
+void	handle_valid_move(t_game *game, int *new_xy, int *old_xy, char *direction)
 {
 	handle_collectibles(game, new_xy[0], new_xy[1]);
 	handle_move_execution(game, new_xy, old_xy, direction);
@@ -108,7 +108,7 @@ int	handle_player_movement(t_game *game)
 	old_xy[1] = new_xy[1];
 	direction = NULL;
 	if (frame++ % 120 == 0)
-		move_enemies(game)
+		move_enemies(game);
 	if (!handle_movement_keys(new_xy, game, &direction))
 		return (handle_idle_animation(game), 0);
 	if (game->player->items_collected == game->map->coins_count)

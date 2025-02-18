@@ -76,11 +76,10 @@ void	find_enemies(t_game *game)
 	{
 		for (j = 0; j < game->map->x; j++)
 		{
-			if (game->map->ptr[i][j] == 'T') // 'E' represents an enemy
+			if (game->map->ptr[i][j] == 'T')
 				game->map->enemy_count++;
 		}
 	}
-	ft_printf("enimes count: %d\n", game->map->enemy_count);
 	game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
 	index = 0;
 	for (i = 0; i < game->map->y; i++)
@@ -95,11 +94,6 @@ void	find_enemies(t_game *game)
 				index++;
 			}
 		}
-	}
-	for (int i = 0; i < game->map->enemy_count; i++)
-	{
-		ft_printf("enemy[%d] x: %d y: %d\n", i + 1, game->enemies[i].x,
-			game->enemies[i].y);
 	}
 }
 
