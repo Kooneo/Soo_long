@@ -68,35 +68,6 @@ static void	process_tile(t_game *g, char c, t_paramholder p)
 	}
 }
 
-void	find_enemies(t_game *game)
-{
-	int i, j, index = 0;
-	game->map->enemy_count = 0;
-	for (i = 0; i < game->map->y; i++)
-	{
-		for (j = 0; j < game->map->x; j++)
-		{
-			if (game->map->ptr[i][j] == 'T')
-				game->map->enemy_count++;
-		}
-	}
-	game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
-	index = 0;
-	for (i = 0; i < game->map->y; i++)
-	{
-		for (j = 0; j < game->map->x; j++)
-		{
-			if (game->map->ptr[i][j] == 'T')
-			{
-				game->enemies[index].x = j;
-				game->enemies[index].y = i;
-				game->enemies[index].direction = 1; // Start moving right
-				index++;
-			}
-		}
-	}
-}
-
 void	map_render(t_game *g)
 {
 	int	i;

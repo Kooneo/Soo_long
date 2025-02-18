@@ -12,16 +12,6 @@
 
 #include "so_long.h"
 
-static void	render_exit(t_game *game)
-{
-	render_image(game, "textures/env/exit_wall.xpm", game->map->exit_x - 2,
-		game->map->exit_y - 2);
-	render_image(game, "textures/env/exit_door.xpm", game->map->exit_x + 12,
-		game->map->exit_y + 13);
-	mlx_put_image_to_window(game->window->mlx, game->window->win,
-		game->base_img->img_ptr, 0, 0);
-}
-
 static void	handle_idle_animation(t_game *g)
 {
 	render_image(g, "textures/bg_64n.xpm", g->player->x_pos, g->player->y_pos);
@@ -70,25 +60,8 @@ static void	handle_move_execution(t_game *g, int new_xy[2], int old_xy[2],
 	}
 }
 
-void	move_enemies(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < game->map->enemy_count)
-	{
-		if (game->map->ptr[game->player->y_pos / 64][game->player->x_pos
-			/ 64] == 'T')
-		{
-			ft_printf("\nGame over... 🏁 you lose! 😜\n");
-			exit_game(game);
-		}
-		move_enemy(game, &game->enemies[i]);
-		i++;
-	}
-}
-
-void	handle_valid_move(t_game *game, int *new_xy, int *old_xy, char *direction)
+void	handle_valid_move(t_game *game, int *new_xy,
+												int *old_xy, char *direction)
 {
 	handle_collectibles(game, new_xy[0], new_xy[1]);
 	handle_move_execution(game, new_xy, old_xy, direction);

@@ -36,3 +36,62 @@ void	move_enemy(t_game *game, t_enemy *enemy)
 			* TILE_SIZE);
 	}
 }
+
+void	find_enemies(t_game *game)
+{
+	int	i;
+	int	j;
+	int	index;
+
+	index = 0;
+	game->map->enemy_count = 0;
+	i = 0;
+	while (i < game->map->y)
+	{
+		j = 0;
+		while (j < game->map->x)
+		{
+			if (game->map->ptr[i][j] == 'T')
+				game->map->enemy_count++;
+			j++;
+		}
+		i++;
+	}
+	game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
+	index = 0;
+	i = 0;
+	while (i < game->map->y)
+	{
+		j = 0;
+		while (j < game->map->x)
+		{
+			if (game->map->ptr[i][j] == 'T')
+			{
+				game->enemies[index].x = j;
+				game->enemies[index].y = i;
+				game->enemies[index].direction = 1;
+				index++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	move_enemies(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->map->enemy_count)
+	{
+		if (game->map->ptr[game->player->y_pos / 64][game->player->x_pos
+			/ 64] == 'T')
+		{
+			ft_printf("\nGame over... 🏁 you lose! 😜\n");
+			exit_game(game);
+		}
+		move_enemy(game, &game->enemies[i]);
+		i++;
+	}
+}

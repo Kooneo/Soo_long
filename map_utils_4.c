@@ -15,11 +15,11 @@
 static int	render_wall_statment(t_game *game, t_paramholder p)
 {
 	return (p.j > 0 && ((game->map->ptr[p.i][p.j - 1] == '0'
-				|| game->map->ptr[p.i][p.j - 1] == 'P'
-				|| game->map->ptr[p.i][p.j - 1] == 'C'
-				|| game->map->ptr[p.i][p.j - 1] == 'E'
-				|| game->map->ptr[p.i][p.j - 1] == 'X'
-				|| game->map->ptr[p.i][p.j - 1] == 'G'))
+			|| game->map->ptr[p.i][p.j - 1] == 'P'
+		|| game->map->ptr[p.i][p.j - 1] == 'C'
+		|| game->map->ptr[p.i][p.j - 1] == 'E'
+		|| game->map->ptr[p.i][p.j - 1] == 'X'
+		|| game->map->ptr[p.i][p.j - 1] == 'G'))
 		&& game->map->ptr[p.i][p.j + 1] == '1');
 }
 

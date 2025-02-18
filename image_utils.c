@@ -55,7 +55,7 @@ void	put_pixel_img(t_img img, int x, int y, int color)
 unsigned int	get_pixel_img(t_img img, int x, int y)
 {
 	return (*(unsigned int *)((img.addr + (y * img.line_length) + (x
-					* img.bits_per_pixel / 8))));
+				* img.bits_per_pixel / 8))));
 }
 
 void	put_img_to_img(t_img dst, t_img src, int x, int y)
