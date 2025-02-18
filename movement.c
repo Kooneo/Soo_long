@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/18 17:59:38 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/18 18:07:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	handle_player_movement(t_game *game)
 		render_exit(game);
 	handle_special_cases(game, new_xy[0], new_xy[1], direction);
 	if (is_move_valid(game, new_xy[0], new_xy[1]))
-		handle_valid_move(game, new_xy, old_xy, direction)
+		handle_valid_move(game, new_xy, old_xy, direction);
 	else
 		handle_idle_animation(game);
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
